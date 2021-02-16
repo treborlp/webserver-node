@@ -2,11 +2,14 @@ const express = require("express")
 const app = express();
 const port = 8080
 
+//Handlebars busca en la carpeta views por defecto
+app.set('view engine', 'hbs');
 //Servir contenido estatico
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-    res.send('Home page');
+    res.render("home"); //No es necesario colocar la extension hbs 
+    //res.send("Hola mundo")
 });
 
 app.get('/hola-mundo', (req, res) => {
