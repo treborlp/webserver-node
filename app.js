@@ -1,6 +1,11 @@
 const express = require("express")
+const hbs = require('hbs');
+
 const app = express();
 const port = 8080
+
+//Registro de parciales
+hbs.registerPartials(__dirname + '/views/partials');
 
 //Handlebars busca en la carpeta views por defecto
 app.set('view engine', 'hbs');
@@ -15,17 +20,20 @@ app.get('/', (req, res) => {
     //res.send("Hola mundo")
 });
 
-app.get('/hola-mundo', (req, res) => {
-    res.send("Bienvenido a Hola mundo");
-});
-
 app.get('/generic', (req, res) => {
-    res.sendFile(__dirname + '/public/generic.html');
+    res.render("generic", {
+        nombre: "Robert Alvarado",
+        curso: "Node"
+    });
 });
 
 app.get('/elements', (req, res) => {
-    res.sendFile(__dirname + '/public/elements.html');
+    res.render("elements", {
+        nombre: "Robert Alvarado",
+        curso: "Node"
+    });
 });
+
 
 
 app.get('*', (req, res) => {
