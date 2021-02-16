@@ -8,7 +8,10 @@ app.set('view engine', 'hbs');
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-    res.render("home"); //No es necesario colocar la extension hbs 
+    res.render("home", {
+        nombre: "Robert Alvarado",
+        curso: "Node"
+    }); //No es necesario colocar la extension hbs 
     //res.send("Hola mundo")
 });
 
